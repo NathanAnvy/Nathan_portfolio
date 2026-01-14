@@ -1,17 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  :root {
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Space Grotesk', sans-serif;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: #0f172a;
+    background-color: #fdf7ee;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      'Liberation Mono', 'Courier New', monospace;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: fade-up 0.8s ease-out forwards;
+  }
+
+  .fade-up-1 {
+    animation-delay: 120ms;
+  }
+
+  .fade-up-2 {
+    animation-delay: 260ms;
+  }
+
+  .fade-up-3 {
+    animation-delay: 420ms;
+  }
+
+  .float-slow {
+    animation: float 7s ease-in-out infinite;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
